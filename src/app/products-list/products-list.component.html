@@ -1,0 +1,30 @@
+<div id="listProducts">
+    <div id="searchingMenu">
+        <h2 id="titleProducts">Bienvenue dans nos rayons ! Faites de bonnes courses :)</h2>
+        <p id="textProducts">Trier les produits présentés ci-dessous par catégorie :</p>
+
+        <select (change)="onChange($event)">
+            <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+        </select>
+    </div>
+    <div id="products">
+        <div *ngFor="let product of productsList" class="product">
+            <img src="{{ product.imgSrc }}" class="imgProduct">
+            <div class="infoProduct">
+                <h2 class="productName">{{ product.name }} <br> - <span class="badge badge-light">{{ product.categorie }}</span> -</h2>
+                <p class="textProduct">{{ product.text }}</p>
+
+                <button type="button" class="btn btn-secondary buyingButton">Acheter</button>
+                <p class="quantiteText"><strong>Quantité : </strong></p>
+                <select class="buyingSelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div> 
+        </div> 
+    </div>  
+</div>
+

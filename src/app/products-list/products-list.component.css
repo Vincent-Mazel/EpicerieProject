@@ -1,0 +1,55 @@
+#listProducts {
+    width: 100%;
+}
+
+#searchingMenu {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+#titleProducts {
+    font-size: 2.5em;
+}
+
+#textProducts {
+    font-size: 1.5em;
+}
+
+#products {
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+.product {
+    margin-bottom: 5%;
+    width: 100%;
+}
+
+.imgProduct {
+    display: inline-block;
+    margin-right: 15%;
+    width: 40%;
+}
+
+.infoProduct {
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.buyingButton {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.quantiteText {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.buyingSelect {
+    display: inline-block;
+}

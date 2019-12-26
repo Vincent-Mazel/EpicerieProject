@@ -36,10 +36,10 @@
 </nav>
 
 <div id="divImgFood">
-  <img id="imgFood" alt="c'est bio pour la santé" src="../assets/images/food.jpg">
+  <img id="imgFood" alt="c'est bio pour la santé" [src]="srcImg">
   <div id="divFoodText">
-    <h1 id="foodImgTitle">L'épicerie si la famille</h1>
-    <h2 id="foodImgText">(en fait c'est un jeu de mot avec "sisi la famille")</h2>
+    <h1 id="foodImgTitle">{{ bannerTitle }}</h1>
+    <h2 id="foodImgText">{{ bannerText }}</h2>
   </div>
 </div>
 

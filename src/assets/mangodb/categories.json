@@ -1,0 +1,8 @@
+[
+    {"catName": "Fruit", "text": "Une épicerie sans fruits ne serait pas une vraie épicerie, nous vous proposons donc de délicieux fruits remplis de merveilleuses vitamines.", "imgSrc": "../../assets/images/categories/categorieFruit.jpg"},
+    {"catName": "Légume", "text": "Eh oui, il faut savoir varier son alimentation et ingurgiter quelques légumes qui bien cuisinés raviront petits et grands !", "imgSrc": "../../assets/images/categories/categorieLegume.jpg"},
+    {"catName": "Oeuf", "text": "Que ce soit à déguster ou au cours d'une prise de masse, l'oeuf est un ingrédient complet et très appréciable sous de multiples formes !", "imgSrc": "../../assets/images/categories/categorieOeuf.jpg"},
+    {"catName": "Viande", "text": "Mmmmhhhhhh de la viande, perso moi j'adore, après faut pas trop en manger non plus mais bon c'est vrai que c'est quand même sacrément bon.", "imgSrc": "../../assets/images/categories/categorieViande.jpg"},
+    {"catName": "Féculent", "text": "Qui dit féculents dit pâtes, et les pâtes c'est super bon, du coup les féculents c'est super cool, CQFD.", "imgSrc": "../../assets/images/categories/categorieFeculent.jpg"},
+    {"catName": "Légumineuse", "text": "Les légumineeeeeeeeeeeeeuses, MERDEEEEEE (voir la vidéo \"Le magasin bio\" du Palmashow pour comprendre). Sinon c'est aussi une belle catégorie, vous allez vous régaler.", "imgSrc": "../../assets/images/categories/categorieLegumineuse.jpg"}
+]

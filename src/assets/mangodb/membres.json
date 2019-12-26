@@ -1,0 +1,7 @@
+[
+    {"nom" : "Mazel", "prénom" : "Vincent", "email" : "vincent.mazel@mailserver.fr", "password" : "gransbestcity"},
+    {"nom" : "Kirscher", "prénom" : "Corentin", "email" : "petitcorentindu13@mailserver.fr", "password" : "jadorelardeche"},
+    {"nom" : "Dupont", "prénom" : "Dupont", "email" : "dupont@mailserver.fr", "password" : "dupont"},
+    {"nom" : "Pierre", "prénom" : "Paul", "email" : "pierre.paul@mailserver.fr", "password" : "pierrepaul"},
+    {"nom" : "José", "prénom" : "Marie-Joseph", "email" : "josé.mariejoseph@mailserver.fr", "password" : "josémariejoseph"}
+]

@@ -1,0 +1,35 @@
+[
+  {"productName": "Tomate", "price": 2.99, "categorie": "Fruit"},
+
+  {"productName": "Banane", "price": 1.99, "categorie": "Fruit"},
+
+  {"productName": "Poivron", "price": 3.99, "categorie": "Légume"},
+
+  {"productName": "Patate", "price": 0.79, "categorie": "Légume"},
+
+  {"productName": "Carotte", "price": 1.49, "categorie": "Légume"},
+
+  {"productName": "Oeuf type 0", "price": 2.59, "categorie": "Oeuf"},
+
+  {"productName": "Oeuf type 2", "price": 1.59, "categorie": "Oeuf"},
+
+  {"productName": "Caillette", "price": 5.89, "categorie": "Viande"},
+
+  {"productName": "Poulet entier", "price": 4.99, "categorie": "Viande"},
+
+  {"productName": "Pomelo", "price": 0.89, "categorie": "Fruit"},
+
+  {"productName": "Cucurbitacée", "price": 2.54, "categorie": "Légume"},
+
+  {"productName": "Topinambour", "price": 1.98, "categorie": "Légume"},
+
+  {"productName": "Quinoa", "price": 2.64, "categorie": "Féculent"},
+
+  {"productName": "Soja", "price": 4.78, "categorie": "Légumineuse"},
+
+  {"productName": "Clementine", "price": 0.55, "categorie": "Fruit"},
+  
+  {"productName": "Figue", "price": 0.99, "categorie": "Fruit"},
+
+  {"productName": "Rhubarbe", "price": 1.50,"categorie": "Fruit"}
+]

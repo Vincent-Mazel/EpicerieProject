@@ -1,35 +1,121 @@
 [
-  {"productName": "Tomate", "price": 2.99, "categorie": "Fruit"},
-
-  {"productName": "Banane", "price": 1.99, "categorie": "Fruit"},
-
-  {"productName": "Poivron", "price": 3.99, "categorie": "Légume"},
-
-  {"productName": "Patate", "price": 0.79, "categorie": "Légume"},
-
-  {"productName": "Carotte", "price": 1.49, "categorie": "Légume"},
-
-  {"productName": "Oeuf type 0", "price": 2.59, "categorie": "Oeuf"},
-
-  {"productName": "Oeuf type 2", "price": 1.59, "categorie": "Oeuf"},
-
-  {"productName": "Caillette", "price": 5.89, "categorie": "Viande"},
-
-  {"productName": "Poulet entier", "price": 4.99, "categorie": "Viande"},
-
-  {"productName": "Pomelo", "price": 0.89, "categorie": "Fruit"},
-
-  {"productName": "Cucurbitacée", "price": 2.54, "categorie": "Légume"},
-
-  {"productName": "Topinambour", "price": 1.98, "categorie": "Légume"},
-
-  {"productName": "Quinoa", "price": 2.64, "categorie": "Féculent"},
-
-  {"productName": "Soja", "price": 4.78, "categorie": "Légumineuse"},
-
-  {"productName": "Clementine", "price": 0.55, "categorie": "Fruit"},
-  
-  {"productName": "Figue", "price": 0.99, "categorie": "Fruit"},
-
-  {"productName": "Rhubarbe", "price": 1.50,"categorie": "Fruit"}
+	{
+		"productName": "Banane Lakatan",
+		"price": 6.66,
+		"categorie": "Fruit",
+		"text": "Dessert très apprécié aux Phillippines, cette banane est connue pour sa longueur et son épaisseur importante, ainsi que pour son parfum plus marqué qu'une bannane classique",
+		"imgSrc": "../../assets/images/products/productBananeLakatan.jpg"
+	},
+	{
+		"productName": "Boeuf de Kobe",
+		"price": 0.05,
+		"categorie": "Viande",
+		"text": "Je pense que vous connaissez cette viande réputée pour être TRÈS bonne et TRÈS chère. Excusez-nous donc par avance pour ce prix TRÈS élevé, on a fait ce qu'on a pu",
+		"imgSrc": "../../assets/images/products/BoeufKobe.jpg"
+	},
+	{
+		"productName": "Caillette",
+		"price": 20.2,
+		"categorie": "Viande",
+		"text": "Provenant de la merveilleuse gastronomie ardéchoise (et on dit pas ça parceque un des membres de l'équipe vient de là-bas), la caillette est vraiment super bonne (et super moche aussi)",
+		"imgSrc": "../../assets/images/products/productCaillette.jpg"
+	},
+	{
+		"productName": "Carotte violette",
+		"price": 17.89,
+		"categorie": "Légume",
+		"text": "Au-delà d'une couleur originale, cette carotte possède également un goût sucré et particulier qui est souvent apprécié",
+		"imgSrc": "../../assets/images/products/productCarotteViolette.jpg"
+	},
+	{
+		"productName": "Clémentine",
+		"price": 1.11,
+		"categorie": "Fruit",
+		"text": "Vous avez remarqué qu'en plus d'être un très bon fruit, c'est aussi un super prénom ? (plus que deux produits à ajouter, le bout du tunnel n'est qu'à quelques mètres)",
+		"imgSrc": "../../assets/images/products/ProductClementine.jpg"
+	},
+	{
+		"productName": "Figue",
+		"price": 2.22,
+		"categorie": "Fruit",
+		"text": "Vous avez remarqué que certains prix référencent des dates marquantes de l'histoire du monde ? Enfin pas tous les prix non plus parcequ'on se souvient pas de TOUTES les dates non plus, mais c'est déjà bien",
+		"imgSrc": "../../assets/images/products/ProductFigue.jpg"
+	},
+	{
+		"productName": "Haricot blanc",
+		"price": 51.51,
+		"categorie": "Légume",
+		"text": "En plus d'avoir la particularité d'être blanc, cet haricot fait partie de ces légumes roboratifs et riches en nutriments qu’il est intéressant de mettre souvent dans les assiettes (on sait pas non plus ce que veut dire roboratif)",
+		"imgSrc": "../../assets/images/products/ProductHaricotBlanc.jpg"
+	},
+	{
+		"productName": "Oeuf de caille",
+		"price": 19.69,
+		"categorie": "Oeuf",
+		"text": "On a un peu la flemme de faire des recherches sur l'oeuf de caille du coup on écrit plein de mots pour combler le vide à côté de l'image qu'on peut voir à gauche",
+		"imgSrc": "../../assets/images/products/ProductOeufCaille.jpg"
+	},
+	{
+		"productName": "Oeuf de poule",
+		"price": 14.92,
+		"categorie": "Oeuf",
+		"text": "Y'a vraiment besoin d'écrire tout un paragraphe pour présenter ce produit ? Perso j'pense pas, après si ça vous dérange vraiment vous pouvez aller sur google",
+		"imgSrc": "../../assets/images/products/ProductOeufPoule.jpg"
+	},
+	{
+		"productName": "Poivron jaune",
+		"price": 19.98,
+		"categorie": "Légume",
+		"text": "Très tendre et particulièrement juteux, nul doute vous allez vous régaler !",
+		"imgSrc": "../../assets/images/products/productPoivronJaune.jpg"
+	},
+	{
+		"productName": "Pomelo",
+		"price": 13.13,
+		"categorie": "Fruit",
+		"text": "Découvert il y a près de 200 ans, le pomelo est le seul agrume à ne pas être originaire d’Asie (c'est internet qui le dit). Et c'est vraiment super bon (c'est encoire une fois internet qui le dit)",
+		"imgSrc": "../../assets/images/products/ProductPomelo.jpg"
+	},
+	{
+		"productName": "Pomme de terre Roseval",
+		"price": 36.15,
+		"categorie": "Légume",
+		"text": "Possédant une chair ferme et aqueuse, cette pomme de terre se délite peu à la cuisson, et est adaptée pour les salades, les pommes vapeur ou en robe des champs",
+		"imgSrc": "../../assets/images/products/productPommeDeTerreRoseval.jpg"
+	},
+	{
+		"productName": "Quinoa",
+		"price": 69.69,
+		"categorie": "Féculent",
+		"text": "En tant qu'aficionados de ce produit, il nous est evidemment impossible d'imaginer un brunch sans quinoa (voir la vidéo du Palmashow \"The Bobo's Quinoa\" afin d'avoir la référence)",
+		"imgSrc": "../../assets/images/products/ProductQuinoa.jpg"
+	},
+	{
+		"productName": "Rhubarbe",
+		"price": 4.44,
+		"categorie": "Fruit",
+		"text": "Mon premier est un chemin possédant un nom au sein d'une ville, tandis que mon deuxième est une accumulation de poils sur le visage d'une personne, et plus précisément sur ses joues",
+		"imgSrc": "../../assets/images/products/ProductRhubarbe.jpg"
+	},
+	{
+		"productName": "Soja",
+		"price": 9.99,
+		"categorie": "Légumineuse",
+		"text": "On a voulu faire des recherches pour ce produit mais y'a trop de trucs sur la page wikipédia du coup on a coupé court l'opération, déso",
+		"imgSrc": "../../assets/images/products/ProductSoja.jpg"
+	},
+	{
+		"productName": "Tomate Cornue des Andes",
+		"price": 15.15,
+		"categorie": "Fruit",
+		"text": "Rapportée de la cordillère des Andes par un collectionneur français, cette tomate saura vous étonner avec sa chair ferme, juteuse, sans acidité, très digeste et parfumée",
+		"imgSrc": "../../assets/images/products/productTomateCornue.jpg"
+	},
+	{
+		"productName": "Topinambour",
+		"price": 3.33,
+		"categorie": "Légume",
+		"text": "En fait on aime bien le nom de ce produit, du coup on l'a mit en rayon, mais on sait pas trop quelles sont ses propriétés (et aussi parceque ça commence à faire beaucoup de temps perdu à remplir la base de données)",
+		"imgSrc": "../../assets/images/products/ProductTopinambour.jpg"
+	}
 ]

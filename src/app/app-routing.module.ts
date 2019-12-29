@@ -15,7 +15,25 @@ const routes: Routes = [
   { path : 'produits',
     component : ProductsListComponent
   },
-  { path : 'produits/:idCategorie',
+  { path : 'produits/cat/:categorie',
+    component : ProductsListComponent
+  },
+  { path : 'produits/cat/:categorie/minPrice/:minPrice',
+    component : ProductsListComponent
+  },
+  { path : 'produits/cat/:categorie/maxPrice/:maxPrice',
+    component : ProductsListComponent
+  },
+  { path : 'produits/cat/:categorie/minPrice/:minPrice/maxPrice/:maxPrice',
+    component : ProductsListComponent
+  },
+  { path : 'produits/minPrice/:minPrice/maxPrice/:maxPrice',
+    component : ProductsListComponent
+  },
+  { path : 'produits/minPrice/:minPrice',
+    component : ProductsListComponent
+  },
+  { path : 'produits/maxPrice/:maxPrice',
     component : ProductsListComponent
   }
 ];

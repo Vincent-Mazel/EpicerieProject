@@ -31,6 +31,7 @@ MongoClient.connect(url, {useNewUrlParser : true}, (err, client) => {
         try {
             db.collection("produits").find().toArray((err, documents) => {
                 res.end(JSON.stringify(documents));
+                console.log(JSON.stringify(documents));
             });
         } catch (e) {
             console.log("Erreur sur /produits : " + e);
@@ -38,7 +39,7 @@ MongoClient.connect(url, {useNewUrlParser : true}, (err, client) => {
         }
     });
 
-    /* Liste des categories */
+    /* Infos sur les categories */
     app.get("/categories", (req, res) => {
         console.log("/categories");
 
@@ -47,22 +48,139 @@ MongoClient.connect(url, {useNewUrlParser : true}, (err, client) => {
                 res.end(JSON.stringify(documents));
             });
         } catch (e) {
-            console.log("Erreur sur /produits : " + e);
+            console.log("Erreur sur /categories : " + e);
             res.end(JSON.stringify([]));
         }
     });
 
-    /* Récupération d'un produit en particulier */
-    app.get("/produits/:categorie", (req, res) => {
-        console.log("/produits/:categorie");
+    /* Liste des categories (leur nom) */
+    app.get("/categorieNames", (req, res) => {
+        console.log("/categorieNames");
+
+        try {
+            db.collection("categories").find({}, 'catName').toArray((err, documents) => {
+                res.end(JSON.stringify(documents));
+                console.log(documents);
+            });
+        } catch (e) {
+            console.log("Erreur sur /categorieNames : " + e);
+            res.end(JSON.stringify([]));
+        }
+    });
+
+    /* Récupération des produits d'une catégorie en particulier */
+    app.get("/produits/cat/:categorie", (req, res) => {
+        console.log("/produits/cat/");
+
         let categorie = req.params.categorie;
 
         try {
-            db.collection("produits").find({ type : categorie }).toArray((err, documents) => {
+            db.collection("produits").find({ categorie: categorie }).toArray((err, documents) => {
                 res.end(JSON.stringify(documents));
             });
         } catch (e) {
-            console.log("Erreur sur /produits/" + categorie + " : " + e);
+            console.log("Erreur sur /produits/cat : " + e);
+            res.end(JSON.stringify([]));
+        }
+    });
+
+    /* Récupération des produits d'une catégorie en particulier avec un min price */
+    app.get("/produits/cat/:categorie/minPrice/:minPrice", (req, res) => {
+        console.log("/produits/cat/minPrice");
+
+        let categorie = req.params.categorie;
+        let minPrice = parseInt(req.params.minPrice, 10);
+
+        try {
+            db.collection("produits").find({ categorie: categorie, price: { $gte: minPrice } }).toArray((err, documents) => {
+                res.end(JSON.stringify(documents));
+            });
+        } catch (e) {
+            console.log("Erreur sur /produits/cat/minPrice : " + e);
+            res.end(JSON.stringify([]));
+        }
+    });
+
+    /* Récupération des produits d'une catégorie en particulier avec un max price */
+    app.get("/produits/cat/:categorie/maxPrice/:maxPrice", (req, res) => {
+        console.log("/produits/cat/maxPrice");
+
+        let categorie = req.params.categorie;
+        let maxPrice = parseInt(req.params.maxPrice, 10);
+
+        try {
+            db.collection("produits").find({ categorie: categorie, price: { $lte: maxPrice } }).toArray((err, documents) => {
+                res.end(JSON.stringify(documents));
+            });
+        } catch (e) {
+            console.log("Erreur sur /produits/cat/maxPrice : " + e);
+            res.end(JSON.stringify([]));
+        }
+    });
+
+    /* Récupération des produits d'une catégorie en particulier en précisant les prix min et max */
+    app.get("/produits/cat/:categorie/minPrice/:minPrice/maxPrice/:maxPrice", (req, res) => {
+        console.log("/produits/cat/minPrice/maxPrice");
+        
+        let categorie = req.params.categorie;
+        let minPrice = parseInt(req.params.minPrice, 10);
+        let maxPrice = parseInt(req.params.maxPrice, 10);
+        console.log(categorie);
+        try {
+            db.collection("produits").find({ categorie: categorie, price: { $gte: minPrice,  $lte: maxPrice } }).toArray((err, documents) => {
+                res.end(JSON.stringify(documents));
+            });
+        } catch (e) {
+            console.log("Erreur sur /produits/cat/minPrice/maxPrice : " + e);
+            res.end(JSON.stringify([]));
+        }
+    });
+
+    /* Récupération des produits entre les prix min et max */
+    app.get("/produits/minPrice/:minPrice/maxPrice/:maxPrice", (req, res) => {
+        console.log("/produits/minPrice/maxPrice");
+
+        let minPrice = parseInt(req.params.minPrice, 10);
+        let maxPrice = parseInt(req.params.maxPrice, 10);
+
+        try {
+            db.collection("produits").find({ price: { $gte: minPrice,  $lte: maxPrice } }).toArray((err, documents) => {
+                res.end(JSON.stringify(documents));
+            });
+        } catch (e) {
+            console.log("Erreur sur /produits/minPrice/maxPrice : " + e);
+            res.end(JSON.stringify([]));
+        }
+    });
+
+    /* Récupération des produits ayant un prix supérieur au prix min */
+    app.get("/produits/minPrice/:minPrice", (req, res) => {
+        console.log("/produits/minPrice");
+
+        let minPrice = parseInt(req.params.minPrice, 10);
+
+        try {
+            db.collection("produits").find({ price: { $gte: minPrice } }).toArray((err, documents) => {
+                res.end(JSON.stringify(documents));
+            });
+        } catch (e) {
+            console.log("Erreur sur /produits/minPrice : " + e);
+            res.end(JSON.stringify([]));
+        }
+    });
+
+    /* Récupération des produits ayant un prix inférieur au prix max */
+    app.get("/produits/maxPrice/:maxPrice", (req, res) => {
+        console.log("/produits/maxPrice");
+
+        let maxPrice = parseInt(req.params.maxPrice, 10);
+
+        try {
+            db.collection("produits").find({ price: { $lte: maxPrice } }).toArray((err, documents) => {
+                res.end(JSON.stringify(documents));
+            });
+        } catch (e) {
+            console.log("Erreur sur /produits/maxPrice : " + e);
             res.end(JSON.stringify([]));
         }
     });

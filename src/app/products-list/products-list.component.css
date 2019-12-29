@@ -40,16 +40,30 @@
     vertical-align: middle;
 }
 
-.buyingButton {
-    display: inline-block;
-    margin-right: 40px;
+.productName {
+    margin-bottom: 3%;
 }
 
-.quantiteText {
+.textProduct {
+    margin-bottom: 3%;
+    font-size: 1.2em;
+}
+
+.buyingButton {
+    display: inline-block;
+}
+
+#filters {
+    height: auto;
+    width: auto;
+}
+
+.textMarginRight {
     display: inline-block;
     margin-right: 10px;
 }
 
-.buyingSelect {
+.elementMarginRight {
     display: inline-block;
+    margin-right: 40px;
 }

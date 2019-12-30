@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { OrderModule } from 'ngx-order-pipe';
+import { AuthentificationService } from '../authentification.service';
 
 @Component({
   selector: 'app-products-list',
@@ -19,11 +20,14 @@ export class ProductsListComponent implements OnInit {
   public minPrice: string;
   public maxPrice: string;
 
+  private user: Observable<string>;
+
   order: string = 'productName';
 
-  constructor(private categoriesService: CategoriesService, private route : ActivatedRoute, private router : Router) {
+  constructor(private categoriesService: CategoriesService, private route : ActivatedRoute, private router : Router, private authService: AuthentificationService) {
     this.categoriesService.getCategories().subscribe(categories => {
       this.categories = categories;
+      this.user = authService.getUser();
     }); 
   }
 

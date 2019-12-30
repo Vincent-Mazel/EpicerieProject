@@ -10,7 +10,7 @@ const httpOptions = {
     "Content-type" : "application/json",
     "Access-Control-Allow-Origin" : "*"
   })
-}
+};
 
 @Injectable({
   providedIn: 'root'

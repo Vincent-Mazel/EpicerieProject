@@ -12,6 +12,8 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { OrderModule } from 'ngx-order-pipe';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import { OrderModule } from 'ngx-order-pipe';
     CardProduitsComponent,
     CardsCategoriesProductsComponent,
     CategoriesListComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    OrderModule
+    OrderModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

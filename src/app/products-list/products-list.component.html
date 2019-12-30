@@ -1,23 +1,30 @@
 <div id="listProducts">
     <div id="searchingMenu">
         <h2 id="titleProducts">Bienvenue dans nos rayons ! Faites de bonnes courses :)</h2>
-        <p id="textProducts">Trier les produits présentés ci-dessous :</p>
 
-        <div id="filters">
-            <p class="textMarginRight"><strong>Catégorie : </strong></p>
+        <div *ngIf="!(user|async)">
+            <p id="textProducts">Connectez-vous afin de pouvoir acheter les produits ci-dessous</p>
+        </div>
 
-            <select [(ngModel)]="selectedCat" class="elementMarginRight">
-                <option *ngFor="let cat of categories" [value]="cat.catName">{{cat.catName}}</option>
-            </select>
-            
-            <p class="textMarginRight"><strong>Prix min : </strong></p>
-            <input [(ngModel)]="minPrice" type="text" class="elementMarginRight" value="0" minlength="1" maxlength="3" size="1">
+        <div *ngIf="user|async">
+            <p id="textProducts">Trier les produits présentés ci-dessous :</p>
 
-            <p class="textMarginRight"><strong>Prix max : </strong></p>
-            <input [(ngModel)]="maxPrice" type="text" class="elementMarginRight" value="100" minlength="1" maxlength="3" size="1">
+            <div id="filters">
+                <p class="textMarginRight"><strong>Catégorie : </strong></p>
 
-            <button (click)="onClickFilters()" type="button" class="btn btn-secondary buyingButton elementMarginRight">Appliquer</button>
-            <button (click)="onClickDeleteFilters()" type="button" class="btn btn-secondary buyingButton">Réinitialiser filtres</button>
+                <select [(ngModel)]="selectedCat" class="elementMarginRight">
+                    <option *ngFor="let cat of categories" [value]="cat.catName">{{cat.catName}}</option>
+                </select>
+                
+                <p class="textMarginRight"><strong>Prix min : </strong></p>
+                <input [(ngModel)]="minPrice" type="text" class="elementMarginRight" value="0" minlength="1" maxlength="3" size="1">
+
+                <p class="textMarginRight"><strong>Prix max : </strong></p>
+                <input [(ngModel)]="maxPrice" type="text" class="elementMarginRight" value="100" minlength="1" maxlength="3" size="1">
+
+                <button (click)="onClickFilters()" type="button" class="btn btn-secondary buyingButton elementMarginRight">Appliquer</button>
+                <button (click)="onClickDeleteFilters()" type="button" class="btn btn-secondary buyingButton">Réinitialiser filtres</button>
+            </div>
         </div>
     </div>
     <div id="products">
@@ -38,7 +45,8 @@
                     <option value="5">5</option>
                 </select>
 
-                <button type="button" class="btn btn-secondary buyingButton">Acheter</button>
+                <button *ngIf="!(user|async)" type="button" disabled class="btn btn-secondary buyingButton">Acheter</button>
+                <button *ngIf="user|async" type="button" class="btn btn-secondary buyingButton">Acheter</button>
             </div> 
         </div> 
     </div>  

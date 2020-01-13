@@ -1,0 +1,42 @@
+[
+    {
+        "email": "vincent.mazel@mailserver.fr",
+        "totalPrice": 20.08,
+        "products": [
+            {
+                "productName": "Banane Lakatan",
+                "price": 6.66,
+                "categorie": "Fruit",
+                "imgSrc": "../../assets/images/products/productBananeLakatan.jpg",
+                "quantite": 3
+            },
+            {
+                "productName": "Boeuf de Kobe",
+                "price": 0.05,
+                "categorie": "Viande",
+                "imgSrc": "../../assets/images/products/BoeufKobe.jpg",
+                "quantite": 2
+            }
+        ]
+    },
+    {
+        "email": "dupont@mailserver.fr",
+        "totalPrice": 104.33,
+        "products": [
+            {
+                "productName": "Caillette",
+                "price": 20.2,
+                "categorie": "Viande",
+                "imgSrc": "../../assets/images/products/productCaillette.jpg",
+                "quantite": 5
+            },
+            {
+                "productName": "Clémentine",
+                "price": 1.11,
+                "categorie": "Fruit",
+                "imgSrc": "../../assets/images/products/ProductClementine.jpg",
+                "quantite": 3
+            }
+        ]
+    }
+]

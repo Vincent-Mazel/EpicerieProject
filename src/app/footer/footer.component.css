@@ -1,0 +1,33 @@
+/* Pied de page */
+#footer {
+    background-color: rgb(108, 136, 136);
+    margin-top: 10%;
+    height: 30%;
+    padding: 25px;
+}
+
+.footerInline {
+    display: inline-block;
+    width: 15%;
+    margin-right: 5%;
+}
+
+.textFooter {
+    color: white;
+}
+
+.titleFooter {
+    margin-bottom: 20px;
+}
+
+#divIcons {
+    width: 20%;
+    height: 100%;
+    float: right;
+}
+
+.iconFooter {
+    display: inline-block;
+    margin-right: 20px;
+    width: 25%;
+}

@@ -1,0 +1,54 @@
+<div id="listProducts">
+    <div id="searchingMenu">
+        <h2 id="titleProducts">Bienvenue dans nos rayons ! Faites de bonnes courses :)</h2>
+
+        <div *ngIf="!(user|async)">
+            <p id="textProducts">Connectez-vous afin de pouvoir acheter les produits ci-dessous</p>
+        </div>
+
+        <div *ngIf="user|async">
+            <p id="textProducts">Trier les produits présentés ci-dessous :</p>
+
+            <div id="filters">
+                <p class="textMarginRight"><strong>Catégorie : </strong></p>
+
+                <select [(ngModel)]="selectedCat" class="elementMarginRight">
+                    <option *ngFor="let cat of categories" [value]="cat.catName">{{cat.catName}}</option>
+                </select>
+                
+                <p class="textMarginRight"><strong>Prix min : </strong></p>
+                <input [(ngModel)]="minPrice" type="text" class="elementMarginRight" value="0" minlength="1" maxlength="3" size="1">
+
+                <p class="textMarginRight"><strong>Prix max : </strong></p>
+                <input [(ngModel)]="maxPrice" type="text" class="elementMarginRight" value="100" minlength="1" maxlength="3" size="1">
+
+                <button (click)="onClickFilters()" type="button" class="btn btn-success buyingButton elementMarginRight">Appliquer</button>
+                <button (click)="onClickDeleteFilters()" type="button" class="btn btn-success buyingButton">Réinitialiser filtres</button>
+            </div>
+        </div>
+    </div>
+    <div id="products">
+        <div *ngFor="let product of productsList | orderBy: order" class="product">
+            <img src="{{ product.imgSrc }}" class="imgProduct">
+            <div class="infoProduct">
+                <h2 class="productName">{{ product.productName }} <br> - <span class="badge badge-light">{{ product.categorie }}</span> -</h2>
+                <p class="textProduct">{{ product.text }}</p>
+
+                <p class="elementMarginRight"><strong>Prix : {{ product.price }}€</strong></p>
+
+                <p class="textMarginRight"><strong>Quantité : </strong></p>
+                <select id="{{ product.productName }}" class="elementMarginRight">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <button *ngIf="!(user|async)" type="button" disabled class="btn btn-success buyingButton">Acheter</button>
+                <button *ngIf="user|async" (click)="onClickBuyItem(product.productName)" type="button" class="btn btn-success buyingButton">Acheter</button>
+            </div> 
+        </div> 
+    </div>  
+</div>
+

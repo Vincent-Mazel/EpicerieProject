@@ -1,0 +1,37 @@
+#listCategories {
+    width: 100%;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.categorie {
+    margin-bottom: 5%;
+}
+
+.imgCategorie {
+    display: inline-block;
+    margin-right: 15%;
+    width: 40%;
+}
+
+.infoCategorie {
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#cardCategories {
+    width: 25%;
+    margin-right: 15%;
+    display: inline-block;
+}
+
+.categorieName {
+    font-size: 2.5em;
+    margin-bottom: 5%;
+}
+
+.textCategorie {
+    font-size: 1.5em;
+}

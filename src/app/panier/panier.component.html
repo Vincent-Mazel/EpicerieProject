@@ -1,0 +1,27 @@
+<div id="panier">
+    <div *ngIf="panier">
+        <div *ngFor="let product of products | orderBy: order" class="product" id="{{ product.productName }}">
+            <img src="{{ product.imgSrc }}" class="imgProduct">
+            <div class="infoProduct">
+                <h2 class="productName">{{ product.productName }} <br> - <span class="badge badge-light">{{ product.categorie }}</span> -</h2>
+        
+                <p class="elementMarginRight"><strong>Prix : {{ product.price }}€</strong></p>
+        
+                <p class="elementMarginRight"><strong>Quantité : {{ product.quantite }}</strong></p>
+        
+                <button type="button" (click)="onClickAdd(product.productName )" class="btn btn-success buyingButton"><strong>+</strong></button>
+                <button type="button" (click)="onClickDelete(product.productName)" class="btn btn-success buyingButton"><strong>-</strong></button>
+            </div> 
+        </div> 
+    
+        <div id="totalValidateDiv">
+            <h4 class><strong>Total : {{ totalPrice }} €</strong></h4>
+            <button type="button" (click)="onClickValidate()" class="btn btn-success buyingButton"><strong>Valider la commande</strong></button>
+        </div> 
+    </div>
+    
+    <div *ngIf="!panier">
+        <p>déso y'a pas</p>
+    </div>
+</div>
+

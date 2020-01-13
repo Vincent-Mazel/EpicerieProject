@@ -1,0 +1,39 @@
+<div id="creationCompte">
+    <h2 id="titleProducts">Rejoignez l'ÉpicerieSilaFamille !</h2>
+    <p id="textPresentation">Le début d'une grande aventure n'est plus qu'à quelques clics ...</p>
+
+    <div class="container">
+        <form (ngSubmit)="onSubmit()" #inscriptionForm="ngForm">
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" class="form-control" [(ngModel)]="utilisateur['nom']" name="Nom" id="nom" required>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Prénom</label>
+            <input type="text" class="form-control" [(ngModel)]="utilisateur['prenom']" name="Prenom" id="prenom" required>
+          </div>
+    
+          <div class="form-group">
+            <label for="alterEgo">Email</label>
+            <input type="text" class="form-control" [(ngModel)]="emailUtilisateur['email']" name="Email" id="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Mot de passe</label>
+            <input type="password" class="form-control" [(ngModel)]="password" name="Password" id="password" required>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Répéter le mot de passe</label>
+            <input type="password" class="form-control" [(ngModel)]="passwordRepeat" name="repeatPassword" id="repeatPassword" required>
+          </div>
+    
+          <button type="submit" class="btn btn-success" id="submitCreationCompte">Submit</button>
+          <span *ngIf="errorMessage"><strong>{{ errorMessage }}</strong></span>
+    
+        </form>
+    </div>
+</div>
+
+

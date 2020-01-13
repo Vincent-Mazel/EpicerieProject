@@ -1,0 +1,10 @@
+<div id="listCategories">
+    <div *ngFor="let categorie of categoriesList | async" class="categorie">
+        <img src="{{ categorie.imgSrc }}" class="imgCategorie">
+        <div class="infoCategorie">
+            <h2 class="categorieName">{{ categorie.catName }}</h2>
+            <p class="textCategorie">{{ categorie.text }}</p>
+        </div>
+        
+    </div> 
+</div>

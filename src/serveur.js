@@ -20,7 +20,7 @@ const url = "mongodb://localhost:27017";
 MongoClient.connect(url, {useNewUrlParser : true}, (err, client) => {
     console.log("MongoDB connecté !");
     let db = client.db("SUPERVENTES"); 
- 
+
     app.get('/', function (req, res) {
         console.log('/');
         res.send('Hello World!')
@@ -217,6 +217,181 @@ MongoClient.connect(url, {useNewUrlParser : true}, (err, client) => {
                         res.end(JSON.stringify({ "resultat" : 1, "message" : "Authentification réussie" }));
                     else res.end(JSON.stringify({ "resultat" : 0, "message" : "Email et/ou mot de passe incorrect" }));
               });
+        } catch(e) {
+            res.end(JSON.stringify({ "resultat" : 0, "message" : e}));
+        }      
+    });
+
+    /* Check si l'email existe déjà dans la base de données */
+    app.post("/membre/checkEmail", (req, res) => {
+        console.log("membre/checkEmail/");
+        console.log(req.body.email);
+
+        try {
+            db.collection("membres")
+              .find(req.body)
+              .toArray((err, documents) => {
+                    if (documents.length == 1)
+                        res.end(JSON.stringify({ "resultat" : 1 }));
+                    else res.end(JSON.stringify({ "resultat" : 0 }));
+              });
+        } catch(e) {
+            res.end(JSON.stringify({ "resultat" : 0, "message" : e}));
+        }      
+    });
+
+    /* Création d'un compte */
+    app.post("/membre/creationCompte", (req, res) => {
+        console.log("membre/creationCompte/");
+
+        try {
+            db.collection("membres").insertOne(req.body, function(err, res) {
+                if (err) throw err;
+                console.log("L'utilisateur " + req.body.prenom + " " + req.body.nom + " a été ajouté à la base de données !");
+
+                let newPanier = {
+                    "email": req.body.email,
+                    "totalPrice": 0,
+                    "products": []
+                };
+
+                db.collection("panier").insertOne(newPanier, function(err, res) {
+                    if (err) throw err;
+                });
+            });
+
+            res.end(JSON.stringify({ "resultat": 1 }));
+        } catch(e) {
+            res.end(JSON.stringify({ "resultat" : 0, "message" : e}));
+        }      
+    });
+
+    /* Récupération du panier d'un utilisateur */
+    app.post("/panier", (req, res) => {
+        console.log("/panier");
+
+        try {
+            db.collection("panier")
+            .find(req.body)
+            .toArray((err, documents) => {
+                    res.end(JSON.stringify({ "panier": documents }));
+            });
+        } catch(e) {
+            res.end(JSON.stringify({ "resultat" : 0, "message" : e}));
+        }      
+    });
+
+    /* Ajout d'un ou plusieurs produits au panier d'un utilisateur */
+    app.post("/panier/add", (req, res) => {
+        console.log("/panier/add");
+
+        let email = { "email": req.body.email };
+
+        try {
+            db.collection("panier")
+            .find(email)
+            .toArray((err, documents) => {
+                let bool = false;
+
+                for (let i = 0; i < documents[0]["products"].length; i++) {
+                    if (documents[0]["products"][i].productName == req.body.productName) {
+                        documents[0]["products"][i].quantite += req.body.nbToAdd;
+                        documents[0]["totalPrice"] += documents[0]["products"][i].price * req.body.nbToAdd;
+
+                        documents[0]["totalPrice"] = Math.round(documents[0]["totalPrice"] * 100)/100;
+
+                        bool = true;
+                        finalIndex = i;
+                        break;
+                    }
+                }
+
+                if (!bool) {
+                    let products = documents[0]["products"];
+                    let newProduct = {
+                        "productName": req.body.productName,
+                        "price": req.body.productDatas.price,
+                        "categorie": req.body.productDatas.categorie,
+                        "imgSrc": req.body.productDatas.imgSrc,
+                        "quantite": req.body.nbToAdd
+                    };
+                    let totalPrice =  documents[0]["totalPrice"] + req.body.productDatas.price * req.body.nbToAdd;
+                    totalPrice = Math.round(totalPrice * 100)/100;
+
+                    products.push(newProduct);
+
+                    db.collection("panier").update( email, { $set: {
+                        totalPrice: totalPrice,
+                        products: products
+                    }});
+                }
+                else {
+                    db.collection("panier").update( email, { $set: {
+                        totalPrice: documents[0]["totalPrice"],
+                        products: documents[0]["products"]
+                    }});
+                }
+
+                res.end(JSON.stringify({ "resultat": 1 }));
+            });
+        } catch(e) {
+            res.end(JSON.stringify({ "resultat" : 0, "message" : e}));
+        }      
+    });
+
+    /* Suppresion d'une unité d'un produit au panier d'un utilisateur */
+    app.post("/panier/deleteOne", (req, res) => {
+        console.log("/panier/deleteOne");
+
+        let email = { "email": req.body.email };
+
+        try {
+            db.collection("panier")
+            .find(email)
+            .toArray((err, documents) => {
+                let haveToDelete = false;
+                
+                for (let i = 0; i < documents[0]["products"].length; i++) {
+                    if (documents[0]["products"][i].productName == req.body.productName) {
+                        documents[0]["products"][i].quantite -= 1;
+
+                        documents[0]["totalPrice"] -= documents[0]["products"][i].price;
+                        documents[0]["totalPrice"] = Math.round(documents[0]["totalPrice"] * 100)/100;
+
+                        if (documents[0]["products"][i].quantite == 0)
+                            documents[0]["products"].splice(i, 1);
+                        
+                        break;
+                    }
+                }
+
+                db.collection("panier").update( email, { $set: {
+                    totalPrice: documents[0]["totalPrice"],
+                    products: documents[0]["products"]
+                }});
+
+                res.end(JSON.stringify({ "resultat": 1 }));
+            });
+        } catch(e) {
+            res.end(JSON.stringify({ "resultat" : 0, "message" : e}));
+        }      
+    });
+
+    /* Suppresion du panier d'un utilisateur */
+    app.post("/panier/deletePanier", (req, res) => {
+        console.log("/panier/deletePanier");
+
+        try {
+            db.collection("panier")
+            .find(req.body)
+            .toArray((err, documents) => {
+                db.collection("panier").update( req.body, { $set: {
+                    totalPrice: 0.0,
+                    products: []
+                }});
+            });
+
+            res.end(JSON.stringify({ "resultat": 1 }));
         } catch(e) {
             res.end(JSON.stringify({ "resultat" : 0, "message" : e}));
         }      

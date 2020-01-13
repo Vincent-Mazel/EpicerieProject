@@ -1,5 +1,5 @@
 <div *ngIf="!(user|async)">
-    <form (ngSubmit)="onSubmit()" class="form-inline" #inscriptionForm="ngForm">
+    <form (ngSubmit)="onSubmit()" class="form-inline" #connexionForm="ngForm" id="connexionForm">
         <span *ngIf="message" class="navbar-brand mb-0 h1"> {{ message }} </span>
 
         <input type="search" class="form-control mr-sm-2" required [(ngModel)]="utilisateur['email']" name="Email" placeholder="Mail" />
@@ -7,9 +7,10 @@
     
         <input class="btn btn-outline-light my-2 my-sm-0" type="submit" value="Connexion" />
     </form>
+
+    <button (click)="onClickCreationCompte()" class="btn btn-outline-light my-2 my-sm-0" value="Creation compte">Créer compte</button>
 </div>
 <div *ngIf="user|async">
-    <button (click)="onClickDeconnexion()" class="btn btn-outline-light my-2 my-sm-0" value="Connexion">Déconnexion</button>
+    <button (click)="onClickDeconnexion()" id="deconnexionButton" class="btn btn-outline-light my-2 my-sm-0" value="Deconnexion">Déconnexion</button>
+    <button (click)="onClickPanier()" class="btn btn-outline-light my-2 my-sm-0" value="Panier">Panier</button>
 </div>
-
-<!-- <p> {{ message }} </p>-->

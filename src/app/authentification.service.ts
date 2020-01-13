@@ -25,6 +25,10 @@ export class AuthentificationService {
     return this.user;
   }
 
+  getUserMail(){
+    return this.user['email'];
+  }
+
   connect(data: string) {
     this.user.next(data);
   }
@@ -35,5 +39,13 @@ export class AuthentificationService {
 
   verificationConnexion(identifiants) : Observable<any> {
     return this.http.post(this.baseURL + 'membre/connexion', JSON.stringify(identifiants), httpOptions); 
+  }
+
+  emailExists(emailUtilisateur) : Observable<any> {
+    return this.http.post(this.baseURL + 'membre/checkEmail', JSON.stringify(emailUtilisateur), httpOptions);
+  }
+
+  createAccount(utilisateur) : Observable<any> {
+    return this.http.post(this.baseURL + 'membre/creationCompte', JSON.stringify(utilisateur), httpOptions); 
   }
 }

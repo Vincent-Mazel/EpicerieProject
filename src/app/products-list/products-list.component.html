@@ -22,8 +22,8 @@
                 <p class="textMarginRight"><strong>Prix max : </strong></p>
                 <input [(ngModel)]="maxPrice" type="text" class="elementMarginRight" value="100" minlength="1" maxlength="3" size="1">
 
-                <button (click)="onClickFilters()" type="button" class="btn btn-secondary buyingButton elementMarginRight">Appliquer</button>
-                <button (click)="onClickDeleteFilters()" type="button" class="btn btn-secondary buyingButton">Réinitialiser filtres</button>
+                <button (click)="onClickFilters()" type="button" class="btn btn-success buyingButton elementMarginRight">Appliquer</button>
+                <button (click)="onClickDeleteFilters()" type="button" class="btn btn-success buyingButton">Réinitialiser filtres</button>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
                 <p class="elementMarginRight"><strong>Prix : {{ product.price }}€</strong></p>
 
                 <p class="textMarginRight"><strong>Quantité : </strong></p>
-                <select class="elementMarginRight">
+                <select id="{{ product.productName }}" class="elementMarginRight">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -45,8 +45,8 @@
                     <option value="5">5</option>
                 </select>
 
-                <button *ngIf="!(user|async)" type="button" disabled class="btn btn-secondary buyingButton">Acheter</button>
-                <button *ngIf="user|async" type="button" class="btn btn-secondary buyingButton">Acheter</button>
+                <button *ngIf="!(user|async)" type="button" disabled class="btn btn-success buyingButton">Acheter</button>
+                <button *ngIf="user|async" (click)="onClickBuyItem(product.productName)" type="button" class="btn btn-success buyingButton">Acheter</button>
             </div> 
         </div> 
     </div>  

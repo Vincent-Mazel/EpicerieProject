@@ -36,14 +36,26 @@ export class ConnexionComponent implements OnInit {
         this.message = reponse['message'];
         setTimeout( () => { this.message = ""; }, 5000);
       }
-      
-      // setTimeout( () => { this.router.navigate(['/categories']); }, 1000 );
     });
   }
 
   onClickDeconnexion() {
     this.authService.disconnect();
-    this.router.navigate([this.router.url]);
+
+    if (this.router.url == "/panier") {
+      this.router.navigate(["/"]);
+    }
+    else {
+      this.router.navigate([this.router.url]);
+    }
+  }
+
+  onClickCreationCompte() {
+    this.router.navigate(["/creationCompte"]);
+  }
+
+  onClickPanier() {
+    this.router.navigate(["/panier"]);
   }
 
   ngOnInit() {

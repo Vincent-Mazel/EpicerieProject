@@ -5,6 +5,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { OrderModule } from 'ngx-order-pipe';
 import { AuthentificationService } from '../authentification.service';
+import { Inject }  from '@angular/core';
+import { DOCUMENT } from '@angular/common'; 
+
 
 @Component({
   selector: 'app-products-list',
@@ -21,6 +24,7 @@ export class ProductsListComponent implements OnInit {
   public maxPrice: string;
 
   private user: Observable<string>;
+  private userEmail: string;
 
   order: string = 'productName';
 
@@ -68,6 +72,30 @@ export class ProductsListComponent implements OnInit {
     }
   }
 
+  onClickBuyItem(productName: string) {
+    let product;
+
+    for (let i = 0; i < this.productsList.length; i++) {
+      if (this.productsList[i]["productName"] == productName) {
+          product = this.productsList[i];
+      }
+    }
+
+    let quantite;
+    let options = document.getElementById(productName);
+
+    for (let i = 0; i < 5; i++) {
+      if (options.childNodes[i]["selected"]) {
+        quantite = options.childNodes[i]["label"];
+        break;
+      } 
+    }
+
+    quantite = +quantite;
+
+    this.categoriesService.addProductToPanier(productName, quantite, this.userEmail, product).subscribe(res => {});
+  }
+
   ngOnInit() {
     this.route.params.subscribe((params : Params) => {
         if (params["categorie"] != undefined)
@@ -79,9 +107,15 @@ export class ProductsListComponent implements OnInit {
         if (params["maxPrice"] != undefined)
           this.maxPrice = params["maxPrice"];
 
-        this.categoriesService.getProducts(params["categorie"], params["minPrice"], params["maxPrice"]).subscribe(productsList => {
-          this.productsList = productsList;
-        });
+        this.authService.getUser().subscribe(res => {
+          this.userEmail = res;
+
+          console.log("user : " + this.userEmail);
+
+          this.categoriesService.getProducts(params["categorie"], params["minPrice"], params["maxPrice"]).subscribe(productsList => {
+            this.productsList = productsList;
+          });
+        });  
     });
   }
 }

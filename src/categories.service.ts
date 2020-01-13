@@ -51,4 +51,26 @@ export class CategoriesService {
       return this.http.get("http://localhost:8080/produits/");
     }
   }
+
+  getPanier(userEmail) : Observable<any> {
+    return this.http.post("http://localhost:8080/panier", JSON.stringify(userEmail), httpOptions);
+  }
+
+  addProductToPanier(productName: string, nbToAdd: number, email: string, productDatas) : Observable<any> {
+    let jsonParams = { "productName": productName, "nbToAdd": nbToAdd, "email": email, "productDatas": productDatas };
+    console.log("add");
+    return this.http.post("http://localhost:8080/panier/add", JSON.stringify(jsonParams), httpOptions);
+  }
+
+  deleteElement(productName: string, email: string) : Observable<any> {
+    let jsonParams = { "productName": productName, "email": email };
+    console.log("delete");
+    return this.http.post("http://localhost:8080/panier/deleteOne", JSON.stringify(jsonParams), httpOptions);
+  }
+
+  validatePanier(email: string) : Observable<any> {
+    let jsonParam = { "email": email };
+
+    return this.http.post("http://localhost:8080/panier/deletePanier", JSON.stringify(jsonParam), httpOptions);
+  }
 }

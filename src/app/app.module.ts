@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrderModule } from 'ngx-order-pipe';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreationCompteComponent } from './creation-compte/creation-compte.component';
+import { FooterComponent } from './footer/footer.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CardsCategoriesProductsComponent,
     CategoriesListComponent,
     ProductsListComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    CreationCompteComponent,
+    FooterComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,
